@@ -31,6 +31,7 @@ class Status : public std::exception {
       : ok_(ok),
         code_(code),
         message_(std::forward<std::string>(message)) {}
+  ~Status() = default;
 
   auto ok() const noexcept -> bool { return ok_; }
   auto code() const noexcept -> int32_t { return code_; }
