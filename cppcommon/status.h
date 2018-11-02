@@ -16,8 +16,8 @@
 #include <sstream>
 #include <exception>
 
-#define LogStatus(ok, code, ...) ::bytespirit::Status::NewWithStringStream(ok, code, ##__VA_ARGS__, "@", __PRETTY_FUNCTION__)
-#define LogStatusWithLine(ok, code, ...) ::bytespirit::Status::NewWithStringStream(ok, code, ##__VA_ARGS__, "@", __PRETTY_FUNCTION__, "#", __FILE__, ":", __LINE__)
+#define FormatStatus(ok, code, ...) ::bytespirit::Status::NewWithStringStream(ok, code, ##__VA_ARGS__, "@", __PRETTY_FUNCTION__)
+#define FormatStatusWithLine(ok, code, ...) ::bytespirit::Status::NewWithStringStream(ok, code, ##__VA_ARGS__, "@", __PRETTY_FUNCTION__, "#", __FILE__, ":", __LINE__)
 
 namespace bytespirit {
 
