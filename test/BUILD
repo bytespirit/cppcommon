@@ -4,6 +4,16 @@ cc_test(
     copts = ["-Iexternal/gtest/include", "-std=c++1z"],
     deps = [
         "@com_google_googletest//:gtest_main",
-        "//cppcommon:status",
+        "//common:status",
+    ],
+)
+
+cc_test(
+    name = "context-test",
+    srcs = ["context-test.cc"],
+    copts = ["-Iexternal/gtest/include", "-std=c++1z"],
+    deps = [
+        "@com_google_googletest//:gtest_main",
+        "//common:context",
     ],
 )

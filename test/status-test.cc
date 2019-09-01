@@ -10,7 +10,7 @@
 
 #include "gtest/gtest.h"
 
-#include "cppcommon/status.h"
+#include "common/status.h"
 
 TEST(StatusTest, Basic) {
   bytespirit::Status status1;
@@ -35,5 +35,6 @@ TEST(StatusTest, Log) {
   auto status1 = FormatStatus(false, 100, "this", "is", 1, "test");
   EXPECT_FALSE(status1.ok());
   EXPECT_TRUE(status1.code() == 100);
-  EXPECT_TRUE(status1.message() == "thisis1test@virtual void StatusTest_Log_Test::TestBody()") << "Actual message:" << status1.message();
+  EXPECT_TRUE(status1.message() == "thisis1test@virtual void StatusTest_Log_Test::TestBody()")
+      << "Actual message:" << status1.message();
 }

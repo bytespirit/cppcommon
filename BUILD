@@ -1,7 +1,8 @@
 cc_library(
     name = "common",
     deps = [
-        "//cppcommon:status",
+        "//common:status",
+        "//common:context",
     ],
     copts = ["-std=c++1z"],
     visibility = ["//visibility:public"],
