@@ -15,9 +15,9 @@
 #include <sstream>
 #include <string>
 
-#define FormatStatus(ok, code, ...) \
+#define FStatus(ok, code, ...) \
   ::bytespirit::Status::NewWithStringStream(ok, code, ##__VA_ARGS__, "@", __PRETTY_FUNCTION__)
-#define FormatStatusWithLine(ok, code, ...)                                                                        \
+#define FFStatus(ok, code, ...)                                                                                    \
   ::bytespirit::Status::NewWithStringStream(ok, code, ##__VA_ARGS__, "@", __PRETTY_FUNCTION__, "#", __FILE__, ":", \
                                             __LINE__)
 

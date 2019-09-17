@@ -32,7 +32,7 @@ TEST(StatusTest, Basic) {
 }
 
 TEST(StatusTest, Log) {
-  auto status1 = FormatStatus(false, 100, "this", "is", 1, "test");
+  auto status1 = FStatus(false, 100, "this", "is", 1, "test");
   EXPECT_FALSE(status1.ok());
   EXPECT_TRUE(status1.code() == 100);
   EXPECT_TRUE(status1.message() == "thisis1test@virtual void StatusTest_Log_Test::TestBody()")
