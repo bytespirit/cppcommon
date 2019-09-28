@@ -1,3 +1,5 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
 cc_library(
     name = "status",
     hdrs = ["status.h"],
@@ -10,5 +12,5 @@ cc_library(
     hdrs = ["context.h"],
     copts = ["-std=c++1z"],
     visibility = ["//visibility:public"],
-    deps = [":status"]
+    deps = [":status"],
 )

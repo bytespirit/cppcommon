@@ -28,9 +28,11 @@ class Status final : public std::exception {
   explicit Status() : Status(true, 0, "") {}
   explicit Status(bool ok) : Status(ok, 0, "") {}
   explicit Status(bool ok, int32_t code) : Status(ok, code, "") {}
+  explicit Status(bool ok, const std::string& message) : Status(ok, 0, message) {}
   explicit Status(bool ok, std::string&& message) : Status(ok, 0, std::forward<std::string>(message)) {}
   explicit Status(bool ok, int32_t code, std::string&& message)
       : ok_(ok), code_(code), message_(std::forward<std::string>(message)) {}
+  explicit Status(bool ok, int32_t code, const std::string& message) : ok_(ok), code_(code), message_(message) {}
   ~Status() = default;
 
   auto ok() const noexcept -> bool { return ok_; }
