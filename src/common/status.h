@@ -15,6 +15,8 @@
 #include <sstream>
 #include <string>
 
+#include "idl/common/status.pb.h"
+
 #define FStatus(ok, code, ...) \
   ::bytespirit::Status::NewWithStringStream(ok, code, ##__VA_ARGS__, "@", __PRETTY_FUNCTION__)
 #define FFStatus(ok, code, ...)                                                                                    \
@@ -40,6 +42,19 @@ class Status final : public std::exception {
   auto message() const noexcept -> const std::string& { return message_; }
   auto what() const noexcept -> const char* override { return message_.c_str(); }
 
+  // Serialize the object to protobuf object
+  auto SerializeToProto() const -> idl::Status {
+    idl::Status s;
+    s.set_ok(ok_);
+    s.set_code(code_);
+    s.set_message(message_);
+    return s;
+  }
+
+  // Parse from protobuf object
+  static auto ParseFromProto(const idl::Status s) -> Status { return Status(s.ok(), s.code(), s.message()); }
+
+  // Create the status object by formatted string
   template <typename... Args>
   static auto NewWithStringStream(bool ok, int32_t code, Args&&... args) -> Status {
     std::ostringstream ss;
